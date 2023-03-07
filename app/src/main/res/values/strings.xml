@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">App Lista</string>
+
+    <!--Nomes dos botões -->
     <string name="limpar">Limpar</string>
     <string name="salvar">Salvar</string>
     <string name="finalizar">Finalizar</string>
+
+    <!--HINTS -->
+    <string name="telefone">Telefone</string>
+    <string name="curso_desejado">Curso Desejado</string>
+    <string name="sobrenome">Sobrenome</string>
+    <string name="primeiro_nome">Primeiro Nome</string>
+
+
 </resources>
