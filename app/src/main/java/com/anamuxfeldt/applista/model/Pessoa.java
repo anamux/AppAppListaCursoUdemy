@@ -1,11 +1,50 @@
 package com.anamuxfeldt.applista.model;
 
 public class Pessoa {
+    private  String primeiroNome, sobrenome, curso, telefone;
 
-    public Pessoa(){
-        String primeiroNome, sobrenome, telefone;
+    public String getPrimeiroNome() {
+        return primeiroNome;
+    }
 
+    public void setPrimeiroNome(String s) {
+        this.primeiroNome = primeiroNome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "primeiroNome='" + primeiroNome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", curso='" + curso + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
     }
 
 
 }
+
