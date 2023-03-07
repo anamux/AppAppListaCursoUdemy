@@ -1,8 +1,10 @@
-package com.anamuxfeldt.applista;
+package com.anamuxfeldt.applista.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.anamuxfeldt.applista.R;
 
 public class MainActivity extends AppCompatActivity {
 
