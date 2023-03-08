@@ -2,6 +2,7 @@ package com.anamuxfeldt.applista.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,8 @@ import com.anamuxfeldt.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "pref_lista";
     Pessoa pessoa;
     EditText txtNome, txtSobrenome, txtCurso, txtTelefone;
     Button btnLimpar, btnSalvar, btnFinalizar;
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences=getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor lista = preferences.edit();
 
         pessoa = new Pessoa();
         txtNome = findViewById(R.id.txtNome);
@@ -57,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        lista.putString("nome", pessoa.getPrimeiroNome());
+        lista.putString("sobrenome", pessoa.getSobrenome());
+        lista.putString("curso", pessoa.getCurso());
+        lista.putString("telefone", pessoa.getTelefone());
+
+        lista.apply();
+
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,
                         "Salvo " + pessoa.toString(),
                         Toast.LENGTH_LONG).show();
+
+
             }
         });
 
