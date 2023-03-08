@@ -10,12 +10,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.anamuxfeldt.applista.R;
+import com.anamuxfeldt.applista.controller.PessoaController;
 import com.anamuxfeldt.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+
     SharedPreferences preferences;
     public static final String NOME_PREFERENCES = "pref_lista";
+
+    PessoaController controller;
+
     Pessoa pessoa;
     EditText txtNome, txtSobrenome, txtCurso, txtTelefone;
     Button btnLimpar, btnSalvar, btnFinalizar;
@@ -25,8 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         preferences=getSharedPreferences(NOME_PREFERENCES, 0);
         SharedPreferences.Editor lista = preferences.edit();
+
+        controller = new PessoaController();
+
 
         pessoa = new Pessoa();
         txtNome = findViewById(R.id.txtNome);
@@ -81,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         "Salvo " + pessoa.toString(),
                         Toast.LENGTH_LONG).show();
 
+
+
+
+                controller.salvar(pessoa);
 
             }
         });
