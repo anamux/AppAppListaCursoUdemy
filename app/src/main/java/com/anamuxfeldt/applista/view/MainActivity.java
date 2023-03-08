@@ -33,14 +33,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_spinner);
 
         controller = new PessoaController(MainActivity.this);
         controller.toString();
-
-        cursoController = new CursoController();
-        cursoController.getlistaDeCursos();
-        nomesDosCursos = cursoController.dadosParaSpinner();
 
         pessoa = new Pessoa();
         controller.buscar(pessoa);
@@ -49,13 +45,16 @@ public class MainActivity extends AppCompatActivity {
         txtSobrenome = findViewById(R.id.txtSobrenome);
         txtCurso = findViewById(R.id.txtCurso);
         txtTelefone = findViewById(R.id.txtTelefone);
-        spinner = findViewById(R.id.spinner2);
+
 
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
 //Adaper , Layout, injetar o adapter ao spinner para gerar a lista
+        cursoController = new CursoController();
+        nomesDosCursos = cursoController.dadosParaSpinner();
+        spinner = findViewById(R.id.spinner2);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, cursoController.dadosParaSpinner());

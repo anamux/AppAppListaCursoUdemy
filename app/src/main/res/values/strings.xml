@@ -11,6 +11,7 @@
     <string name="curso_desejado">Curso Desejado</string>
     <string name="sobrenome">Sobrenome</string>
     <string name="primeiro_nome">Primeiro Nome</string>
+    <string name="selecione_o_curso">Selecione o curso...</string>
 
 
 </resources>
