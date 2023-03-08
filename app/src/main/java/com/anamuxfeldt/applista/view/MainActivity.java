@@ -2,17 +2,17 @@ package com.anamuxfeldt.applista.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.anamuxfeldt.applista.R;
 import com.anamuxfeldt.applista.controller.CursoController;
 import com.anamuxfeldt.applista.controller.PessoaController;
-import com.anamuxfeldt.applista.model.Curso;
 import com.anamuxfeldt.applista.model.Pessoa;
 
 import java.util.List;
@@ -23,9 +23,12 @@ public class MainActivity extends AppCompatActivity {
     CursoController cursoController;
 
     Pessoa pessoa;
-    List<Curso> listaDeCursos;
+    List<String> nomesDosCursos;
     EditText txtNome, txtSobrenome, txtCurso, txtTelefone;
     Button btnLimpar, btnSalvar, btnFinalizar;
+
+    Spinner spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +40,30 @@ public class MainActivity extends AppCompatActivity {
 
         cursoController = new CursoController();
         cursoController.getlistaDeCursos();
-        listaDeCursos = cursoController.getlistaDeCursos();
+        nomesDosCursos = cursoController.dadosParaSpinner();
 
         pessoa = new Pessoa();
         controller.buscar(pessoa);
+
         txtNome = findViewById(R.id.txtNome);
         txtSobrenome = findViewById(R.id.txtSobrenome);
         txtCurso = findViewById(R.id.txtCurso);
         txtTelefone = findViewById(R.id.txtTelefone);
+        spinner = findViewById(R.id.spinner2);
 
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
 
-        txtNome.setText(pessoa.getPrimeiroNome());
-        txtSobrenome.setText(pessoa.getSobrenome());
-        txtCurso.setText(pessoa.getCurso());
-        txtTelefone.setText(pessoa.getTelefone());
+//Adaper , Layout, injetar o adapter ao spinner para gerar a lista
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_list_item_1, cursoController.dadosParaSpinner());
+
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+        spinner.setAdapter(adapter);
+
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
