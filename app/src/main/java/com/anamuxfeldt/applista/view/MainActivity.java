@@ -10,14 +10,20 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.anamuxfeldt.applista.R;
+import com.anamuxfeldt.applista.controller.CursoController;
 import com.anamuxfeldt.applista.controller.PessoaController;
+import com.anamuxfeldt.applista.model.Curso;
 import com.anamuxfeldt.applista.model.Pessoa;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     PessoaController controller;
+    CursoController cursoController;
 
     Pessoa pessoa;
+    List<Curso> listaDeCursos;
     EditText txtNome, txtSobrenome, txtCurso, txtTelefone;
     Button btnLimpar, btnSalvar, btnFinalizar;
 
@@ -27,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         controller = new PessoaController(MainActivity.this);
+        controller.toString();
 
+        cursoController = new CursoController();
+        cursoController.getlistaDeCursos();
+        listaDeCursos = cursoController.getlistaDeCursos();
 
         pessoa = new Pessoa();
         controller.buscar(pessoa);
