@@ -1,6 +1,9 @@
 package com.anamuxfeldt.applista.model;
 
+import com.anamuxfeldt.applista.controller.PessoaController;
+
 public class Pessoa {
+
     private  String primeiroNome, sobrenome, curso, telefone;
 
     public String getPrimeiroNome() {
