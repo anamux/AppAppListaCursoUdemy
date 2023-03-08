@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         txtCurso.setText(pessoa.getCurso());
         txtTelefone.setText(pessoa.getTelefone());
 
-        btnLimpar.setOnClickListener(new View.OnClickListener()
-        {
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 txtNome.setText("");
@@ -66,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
                 pessoa.setCurso(txtCurso.getText().toString());
                 pessoa.setTelefone(txtTelefone.getText().toString());
                 Toast.makeText(MainActivity.this,
-                        "Salvo "+pessoa.toString(),
+                        "Salvo " + pessoa.toString(),
                         Toast.LENGTH_LONG).show();
             }
         });
-
 
 
     }
