@@ -9,10 +9,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.anamuxfeldt.applista.R;
+import com.anamuxfeldt.applista.controller.PessoaController;
 import com.anamuxfeldt.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    PessoaController controller;
     Pessoa pessoa;
     EditText txtNome, txtSobrenome, txtCurso, txtTelefone;
     Button btnLimpar, btnSalvar, btnFinalizar;
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        controller = new PessoaController();
 
         pessoa = new Pessoa();
         txtNome = findViewById(R.id.txtNome);
@@ -67,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,
                         "Salvo " + pessoa.toString(),
                         Toast.LENGTH_LONG).show();
+
+                controller.salvar(pessoa);
             }
         });
 
