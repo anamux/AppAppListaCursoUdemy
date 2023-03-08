@@ -15,10 +15,6 @@ import com.anamuxfeldt.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    SharedPreferences preferences;
-    public static final String NOME_PREFERENCES = "pref_lista";
-
     PessoaController controller;
 
     Pessoa pessoa;
@@ -30,14 +26,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        preferences=getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor lista = preferences.edit();
-
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
 
 
         pessoa = new Pessoa();
+        controller.buscar(pessoa);
         txtNome = findViewById(R.id.txtNome);
         txtSobrenome = findViewById(R.id.txtSobrenome);
         txtCurso = findViewById(R.id.txtCurso);
@@ -59,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 txtSobrenome.setText("");
                 txtCurso.setText("");
                 txtTelefone.setText("");
+
+                controller.limpar();
             }
         });
 
@@ -71,14 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        lista.putString("nome", pessoa.getPrimeiroNome());
-        lista.putString("sobrenome", pessoa.getSobrenome());
-        lista.putString("curso", pessoa.getCurso());
-        lista.putString("telefone", pessoa.getTelefone());
-
-        lista.apply();
-
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

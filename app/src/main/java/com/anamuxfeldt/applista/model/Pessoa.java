@@ -38,16 +38,5 @@ public class Pessoa {
         this.curso = curso;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" +
-                "primeiroNome='" + primeiroNome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", curso='" + curso + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}';
     }
-
-
-}
 
