@@ -10,7 +10,7 @@ public class Pessoa {
         return primeiroNome;
     }
 
-    public void setPrimeiroNome(String s) {
+    public void setPrimeiroNome(String primeiroNome) {
         this.primeiroNome = primeiroNome;
     }
 
